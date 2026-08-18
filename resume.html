@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jainel Vora - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f1419;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #1a1f2e;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            color: white;
+            padding: 40px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .profile-img-container {
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-content h1 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+
+        .header-content .title {
+            font-size: 1.2em;
+            opacity: 0.95;
+            color: #c7d2fe;
+            margin-bottom: 15px;
+        }
+
+        .header-content p {
+            font-size: 0.95em;
+            opacity: 0.85;
+            margin: 3px 0;
+        }
+
+        .github-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .github-links a {
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .github-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section h2 {
+            font-size: 1.4em;
+            color: #60a5fa;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #60a5fa;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .about-section {
+            background: #242d3d;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #60a5fa;
+            margin-bottom: 35px;
+        }
+
+        .about-section p {
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: #242d3d;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border-left: 4px solid #60a5fa;
+        }
+
+        .stat-card .number {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #60a5fa;
+        }
+
+        .stat-card .label {
+            color: #94a3b8;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: #242d3d;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #60a5fa;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 5px 20px rgba(96, 165, 250, 0.1);
+            border-left-color: #7c3aed;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+
+        .project-card h3 {
+            color: #60a5fa;
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 10px;
+            font-size: 0.85em;
+            color: #7c3aed;
+            margin-bottom: 12px;
+        }
+
+        .project-meta span {
+            background: #1a1f2e;
+            padding: 4px 8px;
+            border-radius: 3px;
+        }
+
+        .project-card p {
+            color: #cbd5e1;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9em;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        .project-stats span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 12px;
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        .project-link:hover {
+            color: #7c3aed;
+            text-decoration: underline;
+        }
+
+        .loading {
+            text-align: center;
+            color: #64748b;
+            padding: 20px;
+        }
+
+        footer {
+            background: #0f1419;
+            padding: 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85em;
+            border-top: 1px solid #242d3d;
+        }
+
+        .no-projects {
+            text-align: center;
+            color: #64748b;
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-content h1 {
+                font-size: 2em;
+            }
+
+            .github-links {
+                justify-content: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="profile-img-container">
+                <img id="profileImg" class="profile-img" alt="Profile Picture">
+                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                <small style="display: block; text-align: center; margin-top: 8px; cursor: pointer; color: rgba(255,255,255,0.7); font-size: 0.8em;" onclick="document.getElementById('imageUpload').click()">Upload Photo</small>
+            </div>
+            <div class="header-content">
+                <h1 id="name">Jainel Vora</h1>
+                <div class="title">Full Stack Developer</div>
+                <p id="followers">Loading...</p>
+                <div class="github-links">
+                    <a id="githubProfileLink" href="https://github.com/anikshaayadav-28" target="_blank">GitHub Profile</a>
+                    <a href="#projects">Projects</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <section class="about-section">
+                <p>Passionate developer with expertise in building web applications and open-source projects. Experienced in TypeScript, modern web technologies, and collaborative development.</p>
+            </section>
+
+            <section class="section">
+                <h2>Overview</h2>
+                <div class="stats-grid" id="statsGrid">
+                    <div class="loading">Loading statistics...</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 id="projects">Projects & Experience</h2>
+                <div class="projects-grid" id="repoGrid">
+                    <div class="loading">Loading projects...</div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>Resume • GitHub API • Updated: <span id="lastUpdate">--</span></p>
+        </footer>
+    </div>
+
+    <script>
+        const GITHUB_USERNAME = 'anikshaayadav-28';
+        const GITHUB_API = 'https://api.github.com';
+
+        function removeBackground(imgElement) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = imgElement.width;
+            canvas.height = imgElement.height;
+
+            ctx.drawImage(imgElement, 0, 0);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+
+            for (let i = 0; i < data.length; i += 4) {
+                const r = data[i];
+                const g = data[i + 1];
+                const b = data[i + 2];
+                const a = data[i + 3];
+
+                // Calculate luminance
+                const luminance = (r * 299 + g * 587 + b * 114) / 1000;
+
+                if (luminance > 200) {
+                    data[i + 3] = 0;
+                }
+                else {
+                    const factor = 1.1;
+                    data[i] = Math.min(255, r * factor);
+                    data[i + 1] = Math.min(255, g * factor);
+                    data[i + 2] = Math.min(255, b * factor);
+                }
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+            imgElement.src = canvas.toDataURL();
+        }
+
+        function removeBackgroundFromImage(imgElement, callback) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = imgElement.width;
+            canvas.height = imgElement.height;
+            ctx.drawImage(imgElement, 0, 0);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+
+            for (let i = 0; i < data.length; i += 4) {
+                const r = data[i];
+                const g = data[i + 1];
+                const b = data[i + 2];
+
+                const luminance = (r * 299 + g * 587 + b * 114) / 1000;
+                const saturation = Math.max(r, g, b) - Math.min(r, g, b);
+
+                if (luminance > 200 || (saturation < 30 && luminance > 180)) {
+                    data[i + 3] = 0;
+                }
+                else if (luminance < 150) {
+                    data[i] = Math.min(255, r * 1.15);
+                    data[i + 1] = Math.min(255, g * 1.15);
+                    data[i + 2] = Math.min(255, b * 1.15);
+                }
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+            callback(canvas.toDataURL());
+        }
+
+        function setupImageUpload() {
+            const fileInput = document.getElementById('imageUpload');
+            const profileImg = document.getElementById('profileImg');
+
+            fileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const tempImg = new Image();
+                        tempImg.onload = function() {
+                            removeBackgroundFromImage(tempImg, function(processedImageData) {
+                                profileImg.src = processedImageData;
+                                localStorage.setItem('profileImage', processedImageData);
+                            });
+                        };
+                        tempImg.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        async function loadProfileImage() {
+            const profileImg = document.getElementById('profileImg');
+            
+            const savedImage = localStorage.getItem('profileImage');
+            if (savedImage) {
+                profileImg.src = savedImage;
+                return;
+            }
+
+            try {
+                const response = await fetch(`${GITHUB_API}/users/${GITHUB_USERNAME}`);
+                const userData = await response.json();
+                
+                const tempImg = new Image();
+                tempImg.crossOrigin = 'anonymous';
+                tempImg.onload = function() {
+                    removeBackgroundFromImage(tempImg, function(processedImageData) {
+                        profileImg.src = processedImageData;
+                    });
+                };
+                tempImg.src = userData.avatar_url;
+            } catch (error) {
+                console.error('Error loading profile image:', error);
+            }
+        }
+
+        async function fetchUserProfile() {
+            try {
+                const response = await fetch(`${GITHUB_API}/users/${GITHUB_USERNAME}`);
+                const userData = await response.json();
+
+                document.getElementById('name').textContent = userData.name || GITHUB_USERNAME;
+                document.getElementById('followers').textContent = `${userData.followers} Followers • ${userData.public_repos} Public Repositories`;
+
+                return userData;
+            } catch (error) {
+                console.error('Error fetching user profile:', error);
+            }
+        }
+
+        async function fetchRepositories() {
+            try {
+                const response = await fetch(`${GITHUB_API}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`);
+                const repos = await response.json();
+                displayRepositories(repos);
+                return repos;
+            } catch (error) {
+                console.error('Error fetching repositories:', error);
+            }
+        }
+
+        function displayRepositories(repos) {
+            const repoGrid = document.getElementById('repoGrid');
+            repoGrid.innerHTML = '';
+
+            if (!repos || repos.length === 0) {
+                repoGrid.innerHTML = '<div class="no-projects">No projects found.</div>';
+                return;
+            }
+
+            repos.forEach(repo => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+
+                const language = repo.language || 'Multi-language';
+                const stars = repo.stargazers_count;
+                const forks = repo.forks_count;
+                const updatedDate = new Date(repo.updated_at).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+
+                const description = repo.description || 'A project repository on GitHub.';
+
+                projectCard.innerHTML = `
+                    <div class="project-header">
+                        <h3>${repo.name}</h3>
+                    </div>
+                    <div class="project-meta">
+                        <span>${language}</span>
+                        <span>Updated: ${updatedDate}</span>
+                    </div>
+                    <p>${description}</p>
+                    <div class="project-stats">
+                        <span>⭐ ${stars} Stars</span>
+                        <span>🔀 ${forks} Forks</span>
+                    </div>
+                    <a href="${repo.html_url}" target="_blank" class="project-link">View Repository →</a>
+                `;
+
+                repoGrid.appendChild(projectCard);
+            });
+        }
+
+        async function displayStatistics(userData) {
+            const statsGrid = document.getElementById('statsGrid');
+            statsGrid.innerHTML = '';
+
+            let commitCount = 0;
+            try {
+                const reposResponse = await fetch(`${GITHUB_API}/users/${GITHUB_USERNAME}/repos?per_page=100`);
+                const repos = await reposResponse.json();
+
+                for (const repo of repos) {
+                    try {
+                        const commitsResponse = await fetch(
+                            `${GITHUB_API}/repos/${GITHUB_USERNAME}/${repo.name}/commits?author=${GITHUB_USERNAME}&per_page=1`,
+                            { headers: { 'Accept': 'application/vnd.github.v3+json' } }
+                        );
+                        if (commitsResponse.ok) {
+                            const link = commitsResponse.headers.get('link');
+                            if (link) {
+                                const match = link.match(/page=(\d+)>; rel="last"/);
+                                if (match) {
+                                    commitCount += parseInt(match[1]);
+                                } else {
+                                    commitCount += 1;
+                                }
+                            } else {
+                                const commits = await commitsResponse.json();
+                                commitCount += commits.length;
+                            }
+                        }
+                    } catch (e) {
+                        console.log(`Could not fetch commits for ${repo.name}`);
+                    }
+                }
+            } catch (error) {
+                console.log('Commit count estimation');
+            }
+
+            const stats = [
+                { label: 'Total Repositories', value: userData.public_repos },
+                { label: 'Followers', value: userData.followers },
+                { label: 'Following', value: userData.following },
+                { label: 'Total Commits', value: commitCount }
+            ];
+
+            stats.forEach(stat => {
+                const card = document.createElement('div');
+                card.className = 'stat-card';
+                card.innerHTML = `
+                    <div class="number">${stat.value}</div>
+                    <div class="label">${stat.label}</div>
+                `;
+                statsGrid.appendChild(card);
+            });
+        }
+
+        function updateLastModifiedDate() {
+            const today = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+            document.getElementById('lastUpdate').textContent = today;
+        }
+
+        async function init() {
+            setupImageUpload();
+            loadProfileImage();
+            const userData = await fetchUserProfile();
+            await fetchRepositories();
+            if (userData) {
+                await displayStatistics(userData);
+            }
+            updateLastModifiedDate();
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
